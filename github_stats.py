@@ -485,8 +485,8 @@ Languages:
         deletions = 0
         for repo in await self.repos:
             r = await self.queries.query_rest(f"/repos/{repo}/stats/contributors")
-            rep_del = 0
-            rep_add = 0
+            # rep_del = 0
+            # rep_add = 0
             for author_obj in r:
                 # Handle malformed response from the API by skipping this repo
                 if not isinstance(author_obj, dict) or not isinstance(
@@ -500,12 +500,12 @@ Languages:
                 for week in author_obj.get("weeks", []):
                     additions += week.get("a", 0)
                     deletions += week.get("d", 0)
-                    rep_add += week.get("a", 0)
-                    rep_del += week.get("d", 0)
+                    # rep_add += week.get("a", 0)
+                    # rep_del += week.get("d", 0)
 
     
-            print(f"Additions to {repo}: {rep_add}")
-            print(f"Deletions from {repo}: {rep_del}")
+            # print(f"Additions to {repo}: {rep_add}")
+            # print(f"Deletions from {repo}: {rep_del}")
 
         self._lines_changed = (additions, deletions)
         return self._lines_changed
