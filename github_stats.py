@@ -498,6 +498,8 @@ Languages:
                 for week in author_obj.get("weeks", []):
                     additions += week.get("a", 0)
                     deletions += week.get("d", 0)
+                    print(f"Additions to {repo}: {week.get("a", 0)}")
+                    print(f"Deletions from {repo}: {week.get("d", 0)}")
 
         self._lines_changed = (additions, deletions)
         return self._lines_changed
